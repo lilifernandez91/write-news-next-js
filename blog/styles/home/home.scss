@@ -1,0 +1,7 @@
+.div-container{
+    min-height: calc(100vh - 114px);
+
+    @media (max-width: 992px){
+        min-height: calc(100vh - 105px)
+      }
+}
