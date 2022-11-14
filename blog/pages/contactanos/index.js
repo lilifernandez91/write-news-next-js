@@ -1,7 +1,13 @@
 const ContactanosPage = () => {
     return (
-        <div>
-            Contactanos PAGE
+        <div className='div-container'>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                       Esta es la página de contactos
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

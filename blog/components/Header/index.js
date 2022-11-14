@@ -25,12 +25,12 @@ const Header = () => {
         <div className='header'>
             {width >= isMobile ? (
                 <nav>
-                    <ul>
+                    <ul className='list-container'>
                         <li className='list-header'>
-                            <Link href="/">Home</Link>
+                            <Link href="/" className='link'>Home</Link>
                         </li>
                         <li className='list-header'>
-                            <Link href="/contactanos">Contáctanos</Link>
+                            <Link href="/contactanos" className='link'>Contáctanos</Link>
                         </li>
                     </ul>
                 </nav>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import CustomizedMenus from '../components/ArticlesAccions';
 
 const HomePage = () => {
     const [data, setData] = useState([]);
@@ -22,7 +23,11 @@ const HomePage = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <table className='table'>
+                        <div className='div-button'>
+                        <h1>Listar artículos</h1>
+                        <button type="button" class="btn btn-primary btn-sm">Crear artículo</button>
+                        </div>
+                        <table className='table table-striped table-style'>
                             <thead>
                                 <tr>
                                     <th>Título</th>
@@ -39,7 +44,9 @@ const HomePage = () => {
                                         <td>{p.author}</td>
                                         <td>{p.author}</td>
                                         <td>{p.author}</td>
-                                        <td>{p.author}</td>
+                                        <td>
+                                        <CustomizedMenus />
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

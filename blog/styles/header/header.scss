@@ -1,7 +1,19 @@
 .header{
-    background-color: black;
+    background-color: $background;
+    height: 50px;
 
-    .list-header{
-      list-style: none;
+    .list-container{
+      @include position_header;
+      padding-top: 10px;
+
+      .list-header{
+        list-style: none;
+        margin-right: 32px;
+  
+        .link{
+          color: $primary-color;
+          text-decoration: none;
+        }
+      }
     }
 }

@@ -1,7 +1,23 @@
 .div-container{
-    min-height: calc(100vh - 114px);
+    min-height: calc(100vh - 100px);
+    margin-top: 50px;
 
-    @media (max-width: 992px){
-        min-height: calc(100vh - 105px)
+    .div-button{
+      @include position_header;
+      justify-content: space-between;
+      
+      h1{
+        font-size: 24px;
+      }
+
+      button{
+        margin-bottom: 10px;
+        background-color: $secondary-color;
+        border: none;
+      }
+    }
+
+      .table-style{
+        border: 1px solid $table-border;
       }
 }
