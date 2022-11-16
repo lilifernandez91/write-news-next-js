@@ -8,12 +8,19 @@
       
       h1{
         font-size: 24px;
+        text-decoration: underline;
+        margin-bottom: 16px;
       }
 
       button{
         margin-bottom: 10px;
         background-color: $secondary-color;
         border: none;
+
+        .link{
+          color: $primary-color;
+          text-decoration: none;
+        }
       }
     }
 

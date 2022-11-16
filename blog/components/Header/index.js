@@ -8,7 +8,6 @@ const Header = () => {
 
     const handleWindowSizeChange = () => {
         setWidth(window.innerWidth);
-        console.log(window.innerWidth);
     };
 
     useEffect(() => {
@@ -30,7 +29,7 @@ const Header = () => {
                             <Link href="/" className='link'>Home</Link>
                         </li>
                         <li className='list-header'>
-                            <Link href="/contactanos" className='link'>Contáctanos</Link>
+                            <Link href="/contactanos" className='link'>Contacto</Link>
                         </li>
                     </ul>
                 </nav>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import CustomizedMenus from '../components/ArticlesAccions';
 
@@ -25,7 +26,9 @@ const HomePage = () => {
                     <div className="col-12">
                         <div className='div-button'>
                         <h1>Listar artículos</h1>
-                        <button type="button" class="btn btn-primary btn-sm">Crear artículo</button>
+                        <button type="button" className="btn btn-primary btn-sm">
+                        <Link href="/create-article" className='link'>Crear artículo</Link>
+                        </button>
                         </div>
                         <table className='table table-striped table-style'>
                             <thead>

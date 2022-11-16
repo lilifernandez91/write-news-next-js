@@ -1,0 +1,17 @@
+.div-errors {
+    display: flex;
+    border: 2px solid red;
+    border-radius: 5px;
+    margin-bottom: 16px;
+
+    .errors {
+        list-style: none;
+        margin-top: 12px;
+    }
+
+    .errors-icon {
+        color: red;
+        font-size: 51px;
+        margin-top: 36px;
+    }
+}
