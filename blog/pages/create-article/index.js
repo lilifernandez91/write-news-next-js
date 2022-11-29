@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import CustomCKEditor from '../../components/CkEditor';
 import validarFormulario from '../../components/Validation';
-import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
@@ -32,13 +32,18 @@ const CreateArticle = () => {
             return;
         }
 
+        //Para las tags
+        const tagList = article.tags.split(',');
+        const tagListTrimmed = tagList.map((club) => club.trim());
+
         const payload = {
             ...article,
             content: content,
+            tags: tagListTrimmed,
         };
 
         axios.post(url, payload).then((response) => {
-            if (response.status === 204) {
+            if (response.status === 200) {
                 // redirigir al usuario a la pagina de listar articulos
             } else {
                 // decirle al usuario que algo salio mal
@@ -59,9 +64,9 @@ const CreateArticle = () => {
                         <h1 className="title-editor">Crear artículo</h1>
                     </div>
                     {errors && errors.length > 0 && (
-                        <div className='div-errors'>
-                            <WarningAmberIcon className='errors-icon'/>
-                            <ul className='errors'>
+                        <div className="div-errors">
+                            <WarningAmberIcon className="errors-icon" />
+                            <ul className="errors">
                                 {errors.map((p, i) => (
                                     <li key={i}>{p}</li>
                                 ))}

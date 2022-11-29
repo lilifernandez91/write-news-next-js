@@ -1,0 +1,16 @@
+.container-menu {
+    position: relative;
+
+    .container-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .link-menu {
+            text-decoration: none;
+            margin-right: 63px;
+            color: $primary-color;
+        }
+    }
+}
