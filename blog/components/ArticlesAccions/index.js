@@ -63,7 +63,7 @@ export default function CustomizedMenus(props) {
     const handlePause = () => {
         setAnchorEl(null);
     };
-    
+
     const handleDeleteModal = (article) => {
         setAnchorEl(null);
         props.handleDeleteModal(article);
