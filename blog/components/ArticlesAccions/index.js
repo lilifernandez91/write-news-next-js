@@ -56,8 +56,9 @@ export default function CustomizedMenus(props) {
         setAnchorEl(null);
     };
 
-    const handleEdit = () => {
+    const handleEdit = (article) => {
         setAnchorEl(null);
+        props.handleEdit(article);
     };
 
     const handlePause = () => {
@@ -72,6 +73,7 @@ export default function CustomizedMenus(props) {
     return (
         <div>
             <Button
+                className="button-options"
                 id="demo-customized-button"
                 aria-controls={open ? 'demo-customized-menu' : undefined}
                 aria-haspopup="true"
@@ -92,7 +94,7 @@ export default function CustomizedMenus(props) {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleEdit} disableRipple>
+                <MenuItem onClick={() => handleEdit(props.article)} disableRipple>
                     <EditIcon />
                     Editar artículo
                 </MenuItem>

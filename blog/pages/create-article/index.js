@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
-import CustomCKEditor from '../../components/CkEditor';
 import validarFormulario from '../../components/Validation';
+import ArticleForm from '../../components/ArticleForm';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
@@ -73,73 +73,13 @@ const CreateArticle = () => {
                             </ul>
                         </div>
                     )}
-                    <form onSubmit={onSubmit}>
-                        <div className="row">
-                            <div className="col-12 col-lg-4">
-                                <div className="mb-3">
-                                    <label htmlFor="title" className="form-label">
-                                        Título
-                                    </label>
-                                    <input
-                                        value={article.title}
-                                        onChange={onChange}
-                                        type="text"
-                                        className="form-control"
-                                        id="title"
-                                        //aria-describedby="emailHelp"
-                                        placeholder="Escribe el título del artículo"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">
-                                        Título Secundario
-                                    </label>
-                                    <input
-                                        value={article.secondaryTitle}
-                                        onChange={onChange}
-                                        id="secondaryTitle"
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Escribe el título secundario del artículo"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">
-                                        Autor
-                                    </label>
-                                    <input
-                                        value={article.author}
-                                        onChange={onChange}
-                                        id="author"
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Escribe el autor"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">
-                                        Tags
-                                    </label>
-                                    <input
-                                        value={article.tags}
-                                        onChange={onChange}
-                                        id="tags"
-                                        type="text"
-                                        className="form-control"
-                                        //placeholder=""
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-12 col-lg-8">
-                                <CustomCKEditor onChangeCkeditor={onChangeCkeditor} />
-                            </div>
-                        </div>
-                        <div className="col-12">
-                            <button className="btn-article" type="submit">
-                                Guardar
-                            </button>
-                        </div>
-                    </form>
+                    <ArticleForm
+                        onSubmit={onSubmit}
+                        content={content}
+                        article={article}
+                        onChange={onChange}
+                        onChangeCkeditor={onChangeCkeditor}
+                    />
                 </div>
             </div>
         </div>

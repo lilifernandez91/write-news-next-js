@@ -30,12 +30,49 @@
     }
 }
 
+#icon-modal {
+    color: #ff215c;
+    border: 2px solid #ff215c;
+    border-radius: 50%;
+    font-size: 50px;
+    margin-left: 141px;
+    margin-bottom: 16px;
+}
+
+
+#modal-modal-title {
+    font-size: 20px;
+    text-align: center;
+    color: #5f5c5c;
+    margin-bottom: 16px;
+}
+
+.text-modal {
+    font-size: 12px;
+    text-align: center;
+    color: #91827c;
+}
+
 .button-div {
     display: flex;
     justify-content: space-around;
-    margin-top: 15px;
+    margin-top: 36px;
 
-    .botton-delete {
-        border-radius: 12px;
+    .button-yes {
+        width: 96px;
+        height: 36px;
+        border-radius: 4px;
+        background-color: #ff215c;
+        border: none;
+        color: #f2f2f2;
+    }
+
+    .button-cancel {
+        width: 96px;
+        height: 36px;
+        border-radius: 4px;
+        background-color: #c1c1c1;
+        border: none;
+        color: #f2f2f2;
     }
 }

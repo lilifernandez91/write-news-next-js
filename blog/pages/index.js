@@ -1,6 +1,8 @@
 import { Box, Modal, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import Link from 'next/link';
+import ClearIcon from '@mui/icons-material/Clear';
 import { useEffect, useState } from 'react';
 import CustomizedMenus from '../components/ArticlesAccions';
 
@@ -11,15 +13,16 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: 'none',
     boxShadow: 24,
     p: 4,
 };
 
 const HomePage = () => {
-    const [data, setData] = useState([]); 
-    const [articleToDelete, setArticleToDelete] = useState(null); 
+    const [data, setData] = useState([]);
+    const [articleToDelete, setArticleToDelete] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const router = useRouter();
 
     const url = 'https://futbol-stats-blog-api.azurewebsites.net/api/articles';
 
@@ -38,11 +41,11 @@ const HomePage = () => {
     const handleDelete = () => {
         // api a delete
         const url = `https://futbol-stats-blog-api.azurewebsites.net/api/articles/${articleToDelete.id}`;
-        
+
         axios.delete(url).then((response) => {
             if (response.status === 204) {
                 setShowModal(false);
-                const newData = data.filter(x => x.id !== articleToDelete.id);
+                const newData = data.filter((x) => x.id !== articleToDelete.id);
                 setData(newData);
             }
         });
@@ -51,6 +54,11 @@ const HomePage = () => {
     const handleDeleteModal = (article) => {
         setShowModal(true);
         setArticleToDelete(article);
+    };
+
+    const handleEdit = (article) => {
+        const url = `/edit-article/${article.id}`;
+        router.push(url);
     };
 
     const handleClose = () => {
@@ -91,6 +99,7 @@ const HomePage = () => {
                                             <CustomizedMenus
                                                 article={p}
                                                 handleDeleteModal={handleDeleteModal}
+                                                handleEdit={handleEdit}
                                             />
                                         </td>
                                     </tr>
@@ -107,13 +116,21 @@ const HomePage = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className="container-modal">
+                    <ClearIcon id="icon-modal"/>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        ¿Estás seguro que desea eliminar el artículo?
+                        ¿Estás seguro?
                     </Typography>
-                    <div className='button-div'>
-                    <button className='botton-delete' onClick={handleDelete}>Sí</button>
-                    <button className='botton-delete' onClick={handleClose}>Cancelar</button>
+                    <h1 className="text-modal">
+                        ¿Realmente desea eliminar este artículo? Este proceso no se puede deshacer.
+                    </h1>
+                    <div className="button-div">
+                        <button className="button-cancel" onClick={handleClose}>
+                            Cancelar
+                        </button>
+                        <button className="button-yes" onClick={handleDelete}>
+                            Sí
+                        </button>
                     </div>
                 </Box>
             </Modal>
