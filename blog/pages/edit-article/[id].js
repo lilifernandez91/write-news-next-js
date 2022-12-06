@@ -4,6 +4,7 @@ import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { useRouter } from 'next/router';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
+import URLS from '../../helpers/url-helper';
 
 const EditArticlePage = (props) => {
     const [article, setArticle] = useState({});
@@ -11,21 +12,20 @@ const EditArticlePage = (props) => {
     const [errors, setErrors] = useState([]);
     const router = useRouter();
 
-    const url = "https://futbol-stats-blog-api.azurewebsites.net/api/articles";
-
     const getTags = (tagList) => {
-        if(tagList === null){
+        if (tagList === null) {
             return '';
         }
-        let result = tagList.join(', ')
+        let result = tagList.join(', ');
 
         return result;
     };
 
     useEffect(() => {
-        const urlget = `${url}/${props.id}`;
+        const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
+
         axios
-            .get(urlget)
+            .get(urlEdit)
             .then((response) => {
                 const newArticle = { ...response.data };
                 newArticle.tags = getTags(newArticle.tags);
@@ -61,7 +61,7 @@ const EditArticlePage = (props) => {
             tags: tagListTrimmed,
         };
 
-        const urlEdit = `${url}/${props.id}`;
+        const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
 
         axios.put(urlEdit, payload).then((response) => {
             if (response.status === 200) {

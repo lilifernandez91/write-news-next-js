@@ -15,8 +15,6 @@ const CreateArticle = () => {
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
 
-    const url = 'https://futbol-stats-blog-api.azurewebsites.net/api/articles';
-
     //Para controlar el input
     const onChange = (event) => {
         const { id, value } = event.target; //event.target es el input y se queda con el id y el value
@@ -42,7 +40,9 @@ const CreateArticle = () => {
             tags: tagListTrimmed,
         };
 
-        axios.post(url, payload).then((response) => {
+        const urlGet = URLS.URL_ARTICLES();
+
+        axios.post(urlGet, payload).then((response) => {
             if (response.status === 200) {
                 // redirigir al usuario a la pagina de listar articulos
             } else {

@@ -4,7 +4,10 @@ import axios from 'axios';
 import Link from 'next/link';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useEffect, useState } from 'react';
-import CustomizedMenus from '../components/ArticlesAccions';
+import CustomizedMenus from '../components/CustomizedMenus';
+import URLS from '../helpers/url-helper';
+import { articleStatusHelper } from '../helpers/article-helper';
+import { ARTICLE_STATUS } from '../constants/articleStatus';
 
 const style = {
     position: 'absolute',
@@ -24,11 +27,11 @@ const HomePage = () => {
     const [showModal, setShowModal] = useState(false);
     const router = useRouter();
 
-    const url = 'https://futbol-stats-blog-api.azurewebsites.net/api/articles';
-
     useEffect(() => {
+        const urlGet = URLS.URL_ARTICLES();
+
         axios
-            .get(url)
+            .get(urlGet)
             .then((response) => {
                 setData(response.data);
                 console.log(response.data);
@@ -40,9 +43,9 @@ const HomePage = () => {
 
     const handleDelete = () => {
         // api a delete
-        const url = `https://futbol-stats-blog-api.azurewebsites.net/api/articles/${articleToDelete.id}`;
+        const urlDelete = URLS.URL_ARTICLES_DELETE(articleToDelete.id);
 
-        axios.delete(url).then((response) => {
+        axios.delete(urlDelete).then((response) => {
             if (response.status === 204) {
                 setShowModal(false);
                 const newData = data.filter((x) => x.id !== articleToDelete.id);
@@ -64,6 +67,20 @@ const HomePage = () => {
     const handleClose = () => {
         setShowModal(false);
     };
+
+    const handlePause = (article) => {
+        const urlPause = URLS.URL_ARTICLES_PAUSE(article.id)
+
+        const payload = {
+            status : ARTICLE_STATUS.PAUSED
+        }
+
+        axios.put(urlPause, payload).then((response) => {
+            if (response.status === 204) {
+                
+            }
+        });
+    }
 
     return (
         <div className="div-container">
@@ -94,12 +111,13 @@ const HomePage = () => {
                                         <td>{p.title}</td>
                                         <td>{p.author}</td>
                                         <td>{p.lastUpdated}</td>
-                                        <td>{p.status}</td>
+                                        <td>{articleStatusHelper.GET_ARTICLE_STATUS(p.status)}</td>
                                         <td>
                                             <CustomizedMenus
                                                 article={p}
                                                 handleDeleteModal={handleDeleteModal}
                                                 handleEdit={handleEdit}
+                                                handlePause={handlePause}
                                             />
                                         </td>
                                     </tr>
@@ -117,7 +135,7 @@ const HomePage = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style} className="container-modal">
-                    <ClearIcon id="icon-modal"/>
+                    <ClearIcon id="icon-modal" />
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         ¿Estás seguro?
                     </Typography>

@@ -61,8 +61,9 @@ export default function CustomizedMenus(props) {
         props.handleEdit(article);
     };
 
-    const handlePause = () => {
+    const handlePause = (article) => {
         setAnchorEl(null);
+        props.handlePause(article)
     };
 
     const handleDeleteModal = (article) => {
@@ -98,7 +99,7 @@ export default function CustomizedMenus(props) {
                     <EditIcon />
                     Editar artículo
                 </MenuItem>
-                <MenuItem onClick={handlePause} disableRipple>
+                <MenuItem onClick={() => handlePause(props.article)} disableRipple>
                     <PauseCircleIcon />
                     Pausar artículo
                 </MenuItem>
