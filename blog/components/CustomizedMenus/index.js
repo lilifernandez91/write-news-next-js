@@ -9,6 +9,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { ARTICLE_STATUS } from '../../constants/articleStatus';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -62,9 +63,9 @@ export default function CustomizedMenus(props) {
         props.handleEdit(article);
     };
 
-    const handlePause = (article) => {
+    const handleChangeStatus = (article, status) => {
         setAnchorEl(null);
-        props.handlePause(article)
+        props.handleChangeStatus(article, status);
     };
 
     const handleDeleteModal = (article) => {
@@ -100,11 +101,50 @@ export default function CustomizedMenus(props) {
                     <EditIcon />
                     Editar artículo
                 </MenuItem>
-                <MenuItem onClick={() => handlePause(props.article)} disableRipple>
-                    <PauseCircleIcon />
-                    Pausar artículo
-                </MenuItem>
+
+                {props.article.status === ARTICLE_STATUS.PUBLISHED && (
+                    <MenuItem
+                        onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.PAUSED)}
+                        disableRipple
+                    >
+                        <PauseCircleIcon />
+                        Pausar artículo
+                    </MenuItem>
+                )}
+
+                {props.article.status === ARTICLE_STATUS.PAUSED && (
+                    <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.CREATED)} disableRipple>
+                        <PauseCircleIcon />
+                        Despausar artículo
+                    </MenuItem>
+                )}
+
+                {props.article.status === ARTICLE_STATUS.CREATED && (
+                    <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.PUBLISHED)} disableRipple>
+                        <PauseCircleIcon />
+                        Publicar artículo
+                    </MenuItem>
+                )}
+
                 <Divider sx={{ my: 0.5 }} />
+
+                {props.article.status === ARTICLE_STATUS.ARCHIVED && (
+                    <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.CREATED)} disableRipple>
+                        <PauseCircleIcon />
+                        Desarchivar artículo
+                    </MenuItem>
+                )}
+
+                {(props.article.status === ARTICLE_STATUS.CREATED ||
+                    props.article.status === ARTICLE_STATUS.PUBLISHED ||
+                    props.article.status === ARTICLE_STATUS.PAUSED ||
+                    props.article.status === ARTICLE_STATUS.DRAFT) && (
+                    <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.ARCHIVED)} disableRipple>
+                        <PauseCircleIcon />
+                        Archivar artículo
+                    </MenuItem>
+                )}
+
                 <MenuItem onClick={() => handleDeleteModal(props.article)} disableRipple>
                     <DeleteIcon />
                     Eliminar artículo

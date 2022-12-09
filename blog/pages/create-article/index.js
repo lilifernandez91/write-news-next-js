@@ -60,7 +60,7 @@ const CreateArticle = () => {
 
     return (
         <div className="div-container">
-            <HeadComponent pageId={Pages.LIST_ARTICLES} />
+            <HeadComponent pageId={Pages.CREATE_ARTICLE} />
             <div className="container">
                 <div className="row">
                     <div className="col-12">

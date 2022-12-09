@@ -9,7 +9,7 @@ const URLS = {
     URL_ARTICLES_EDIT: (id) => {
         return `${process.env.NEXT_PUBLIC_URL_API}/articles/${id}`;
     },
-    URL_ARTICLES_PAUSE: (id) => {
+    URL_ARTICLES_CHANGE_STATUS: (id) => {
         return `${process.env.NEXT_PUBLIC_URL_API}/articles/update-status/${id}`;
     },
 };

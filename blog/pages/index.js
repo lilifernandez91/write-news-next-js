@@ -7,10 +7,10 @@ import { useEffect, useState } from 'react';
 import CustomizedMenus from '../components/CustomizedMenus';
 import URLS from '../helpers/url-helper';
 import { articleStatusHelper } from '../helpers/article-helper';
-import { ARTICLE_STATUS } from '../constants/articleStatus';
 import HeadComponent from '../components/HeadComponent';
 import { Pages } from '../constants/pages';
 import { getDateFormated } from '../helpers/datetime-helper';
+import MultipleSelectCheckmarks from '../components/Select';
 
 const style = {
     position: 'absolute',
@@ -71,15 +71,22 @@ const HomePage = () => {
         setShowModal(false);
     };
 
-    const handlePause = (article) => {
-        const urlPause = URLS.URL_ARTICLES_PAUSE(article.id);
+    const handleChangeStatus = (article, status) => {
+        const urlPause = URLS.URL_ARTICLES_CHANGE_STATUS(article.id);
 
         const payload = {
-            status: ARTICLE_STATUS.PAUSED,
+            status: status,
         };
 
         axios.put(urlPause, payload).then((response) => {
             if (response.status === 204) {
+                const newData = [...data];
+                for (const x of newData) {
+                    if (article.id === x.id){
+                        x.status = status;
+                    }
+                }
+                setData(newData);
             }
         });
     };
@@ -92,6 +99,9 @@ const HomePage = () => {
                     <div className="col-12">
                         <div className="div-button">
                             <h1>Listar artículos</h1>
+                            <div className='select'>
+                            <MultipleSelectCheckmarks />
+                            </div>
                             <button type="button" className="btn btn-primary btn-sm">
                                 <Link href="/create-article" className="link">
                                     Crear artículo
@@ -122,7 +132,7 @@ const HomePage = () => {
                                                 article={p}
                                                 handleDeleteModal={handleDeleteModal}
                                                 handleEdit={handleEdit}
-                                                handlePause={handlePause}
+                                                handleChangeStatus={handleChangeStatus}
                                             />
                                         </td>
                                     </tr>
