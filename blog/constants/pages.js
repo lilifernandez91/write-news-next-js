@@ -1,0 +1,5 @@
+export const Pages = {
+    CREATE_ARTICLE: 'CREATE_ARTICLE',
+    EDIT_ARTICLE: 'EDIT_ARTICLE',
+    LIST_ARTICLES: 'LIST_ARTICLES',
+}

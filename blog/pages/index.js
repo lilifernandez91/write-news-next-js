@@ -8,6 +8,8 @@ import CustomizedMenus from '../components/CustomizedMenus';
 import URLS from '../helpers/url-helper';
 import { articleStatusHelper } from '../helpers/article-helper';
 import { ARTICLE_STATUS } from '../constants/articleStatus';
+import HeadComponent from '../components/HeadComponent';
+import { Pages } from '../constants/pages';
 
 const style = {
     position: 'absolute',
@@ -83,6 +85,7 @@ const HomePage = () => {
 
     return (
         <div className="div-container">
+            <HeadComponent pageId={Pages.LIST_ARTICLES} />
             <div className="container">
                 <div className="row">
                     <div className="col-12">
@@ -108,7 +111,7 @@ const HomePage = () => {
                             <tbody>
                                 {data.map((p, i) => (
                                     <tr key={i}>
-                                        <td>{i+1}</td>
+                                        <td>{i + 1}</td>
                                         <td>{p.title}</td>
                                         <td>{p.author}</td>
                                         <td>{p.lastUpdated}</td>
