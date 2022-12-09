@@ -69,18 +69,17 @@ const HomePage = () => {
     };
 
     const handlePause = (article) => {
-        const urlPause = URLS.URL_ARTICLES_PAUSE(article.id)
+        const urlPause = URLS.URL_ARTICLES_PAUSE(article.id);
 
         const payload = {
-            status : ARTICLE_STATUS.PAUSED
-        }
+            status: ARTICLE_STATUS.PAUSED,
+        };
 
         axios.put(urlPause, payload).then((response) => {
             if (response.status === 204) {
-                
             }
         });
-    }
+    };
 
     return (
         <div className="div-container">
@@ -98,6 +97,7 @@ const HomePage = () => {
                         <table className="table table-striped table-style">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Título</th>
                                     <th>Autor</th>
                                     <th>Fecha</th>
@@ -108,6 +108,7 @@ const HomePage = () => {
                             <tbody>
                                 {data.map((p, i) => (
                                     <tr key={i}>
+                                        <td>{i+1}</td>
                                         <td>{p.title}</td>
                                         <td>{p.author}</td>
                                         <td>{p.lastUpdated}</td>
