@@ -3,38 +3,52 @@
     margin-top: 50px;
     overflow-x: auto;
 
-    .div-button {
-        @include position_header;
-        justify-content: space-between;
+    h1 {
+        font-size: 24px;
+        text-decoration: underline;
+        margin-bottom: 16px;
+        margin-left: 10px;
+    }
 
-        h1 {
-            font-size: 24px;
-            text-decoration: underline;
-            margin-bottom: 16px;
+    .container-btn-search-status {
+        display: flex;
+        align-items: center;
+
+        .btn-search-status {
+            background-color: $action-color;
+            border: none;
+            width: 80px;
+            height: 55px;
+            border-radius: 3px;
         }
 
-        .select{
-            margin-bottom: 12px;
+        .link-search-status {
+            color: $white-color;
+            text-decoration: none;
         }
     }
 
-        button {
-            margin-bottom: 10px;
+    .container-btn-create-article {
+        display: flex;
+        justify-content: right;
+
+        .btn-create-article {
             background-color: $action-color;
             border: none;
             width: 125px;
-            height: 40px;
-            
-            .link {
+            height: 55px;
+
+            .link-create-article {
                 color: $white-color;
                 text-decoration: none;
             }
         }
     }
+}
 
-    .table-style {
-        border: 1px solid $table-border;
-    }
+.table-style {
+    border: 1px solid $table-border;
+}
 
 #icon-modal {
     color: #ff215c;
@@ -44,7 +58,6 @@
     margin-left: 141px;
     margin-bottom: 16px;
 }
-
 
 #modal-modal-title {
     font-size: 20px;

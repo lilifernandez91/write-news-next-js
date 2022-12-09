@@ -82,7 +82,7 @@ const HomePage = () => {
             if (response.status === 204) {
                 const newData = [...data];
                 for (const x of newData) {
-                    if (article.id === x.id){
+                    if (article.id === x.id) {
                         x.status = status;
                     }
                 }
@@ -96,50 +96,60 @@ const HomePage = () => {
             <HeadComponent pageId={Pages.LIST_ARTICLES} />
             <div className="container">
                 <div className="row">
-                    <div className="col-12">
-                        <div className="div-button">
-                            <h1>Listar artículos</h1>
-                            <div className='select'>
+                    <div>
+                        <h1>Listar artículos</h1>
+                    </div>
+                    <div className="col-8 container-btn-search-status">
+                        <div>
                             <MultipleSelectCheckmarks />
-                            </div>
-                            <button type="button" className="btn btn-primary btn-sm">
-                                <Link href="/create-article" className="link">
-                                    Crear artículo
+                        </div>
+                        <div>
+                            <button type="button" className='btn-search-status'>
+                                <Link href="" className='link-search-status'>
+                                    Buscar
                                 </Link>
                             </button>
                         </div>
-                        <table className="table table-striped table-style">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Título</th>
-                                    <th>Autor</th>
-                                    <th>Fecha</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data.map((p, i) => (
-                                    <tr key={i}>
-                                        <td>{i + 1}</td>
-                                        <td>{p.title}</td>
-                                        <td>{p.author}</td>
-                                        <td>{getDateFormated(p.lastUpdated)}</td>
-                                        <td>{articleStatusHelper.GET_ARTICLE_STATUS(p.status)}</td>
-                                        <td>
-                                            <CustomizedMenus
-                                                article={p}
-                                                handleDeleteModal={handleDeleteModal}
-                                                handleEdit={handleEdit}
-                                                handleChangeStatus={handleChangeStatus}
-                                            />
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
                     </div>
+                    <div className="col-4 container-btn-create-article">
+                        <button type="button" className="btn btn-primary btn-sm btn-create-article">
+                            <Link href="/create-article" className="link-create-article">
+                                Crear artículo
+                            </Link>
+                        </button>
+                    </div>
+
+                    <table className="table table-striped table-style">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((p, i) => (
+                                <tr key={i}>
+                                    <td>{i + 1}</td>
+                                    <td>{p.title}</td>
+                                    <td>{p.author}</td>
+                                    <td>{getDateFormated(p.lastUpdated)}</td>
+                                    <td>{articleStatusHelper.GET_ARTICLE_STATUS(p.status)}</td>
+                                    <td>
+                                        <CustomizedMenus
+                                            article={p}
+                                            handleDeleteModal={handleDeleteModal}
+                                            handleEdit={handleEdit}
+                                            handleChangeStatus={handleChangeStatus}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
