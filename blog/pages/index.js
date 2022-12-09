@@ -10,6 +10,7 @@ import { articleStatusHelper } from '../helpers/article-helper';
 import { ARTICLE_STATUS } from '../constants/articleStatus';
 import HeadComponent from '../components/HeadComponent';
 import { Pages } from '../constants/pages';
+import { getDateFormated } from '../helpers/datetime-helper';
 
 const style = {
     position: 'absolute',
@@ -114,7 +115,7 @@ const HomePage = () => {
                                         <td>{i + 1}</td>
                                         <td>{p.title}</td>
                                         <td>{p.author}</td>
-                                        <td>{p.lastUpdated}</td>
+                                        <td>{getDateFormated(p.lastUpdated)}</td>
                                         <td>{articleStatusHelper.GET_ARTICLE_STATUS(p.status)}</td>
                                         <td>
                                             <CustomizedMenus
