@@ -8,6 +8,7 @@ import CustomizedMenus from '../components/CustomizedMenus';
 import URLS from '../helpers/url-helper';
 import { articleStatusHelper } from '../helpers/article-helper';
 import { ARTICLE_STATUS } from '../constants/articleStatus';
+import { getDateFormated } from '../helpers/datetime-helper';
 
 const style = {
     position: 'absolute',
@@ -108,10 +109,10 @@ const HomePage = () => {
                             <tbody>
                                 {data.map((p, i) => (
                                     <tr key={i}>
-                                        <td>{i+1}</td>
+                                        <td>{i + 1}</td>
                                         <td>{p.title}</td>
                                         <td>{p.author}</td>
-                                        <td>{p.lastUpdated}</td>
+                                        <td>{getDateFormated(p.lastUpdated)}</td>
                                         <td>{articleStatusHelper.GET_ARTICLE_STATUS(p.status)}</td>
                                         <td>
                                             <CustomizedMenus
