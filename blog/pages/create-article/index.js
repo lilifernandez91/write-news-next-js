@@ -3,6 +3,7 @@ import { useState } from 'react';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
+import URLS from '../../helpers/url-helper';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
