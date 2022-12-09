@@ -8,6 +8,7 @@ import Divider from '@mui/material/Divider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -84,7 +85,7 @@ export default function CustomizedMenus(props) {
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
             >
-                Opciones
+                <MoreHorizIcon />
             </Button>
             <StyledMenu
                 id="demo-customized-menu"

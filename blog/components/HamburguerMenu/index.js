@@ -25,9 +25,6 @@ const HamburguerMenu = () => {
                             <li>
                                 <Link href="/" className='link-menu'>Home</Link>
                             </li>
-                            <li>
-                                <Link href="/contactanos" className='link-menu'>Contáctanos</Link>
-                            </li>
                         </ul>
                     </nav>
                 </div>

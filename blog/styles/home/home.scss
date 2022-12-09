@@ -15,11 +15,13 @@
 
         button {
             margin-bottom: 10px;
-            background-color: $secondary-color;
+            background-color: $action-color;
             border: none;
-
+            width: 125px;
+            height: 40px;
+            
             .link {
-                color: $primary-color;
+                color: $white-color;
                 text-decoration: none;
             }
         }
