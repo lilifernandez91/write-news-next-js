@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { useState } from 'react';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
 import HeadComponent from '../../components/HeadComponent';
 import { Pages } from '../../constants/pages';
+import axiosApiInstance from '../../http/axiosInstance';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
@@ -44,7 +44,7 @@ const CreateArticle = () => {
 
         const urlGet = URLS.URL_ARTICLES();
 
-        axios.post(urlGet, payload).then((response) => {
+        axiosApiInstance.post(urlGet, payload).then((response) => {
             if (response.status === 200) {
                 // redirigir al usuario a la pagina de listar articulos
             } else {

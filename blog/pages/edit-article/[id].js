@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { useRouter } from 'next/router';
@@ -7,6 +6,7 @@ import ArticleForm from '../../components/ArticleForm';
 import URLS from '../../helpers/url-helper';
 import HeadComponent from '../../components/HeadComponent';
 import { Pages } from '../../constants/pages';
+import axiosApiInstance from '../../http/axiosInstance';
 
 const EditArticlePage = (props) => {
     const [article, setArticle] = useState({});
@@ -26,7 +26,7 @@ const EditArticlePage = (props) => {
     useEffect(() => {
         const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
 
-        axios
+        axiosApiInstance
             .get(urlEdit)
             .then((response) => {
                 const newArticle = { ...response.data };
@@ -65,7 +65,7 @@ const EditArticlePage = (props) => {
 
         const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
 
-        axios.put(urlEdit, payload).then((response) => {
+        axiosApiInstance.put(urlEdit, payload).then((response) => {
             if (response.status === 200) {
                 router.push('/');
             }
