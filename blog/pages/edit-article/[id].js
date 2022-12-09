@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
 import URLS from '../../helpers/url-helper';
+import HeadComponent from '../../components/HeadComponent';
+import { Pages } from '../../constants/pages';
 
 const EditArticlePage = (props) => {
     const [article, setArticle] = useState({});
@@ -77,6 +79,7 @@ const EditArticlePage = (props) => {
 
     return (
         <div>
+            <HeadComponent pageId={Pages.EDIT_ARTICLE} />
             <div className="div-container">
                 <div className="container">
                     <div className="row">

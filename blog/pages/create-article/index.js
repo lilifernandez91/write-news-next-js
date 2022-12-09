@@ -3,7 +3,8 @@ import { useState } from 'react';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
-import URLS from '../../helpers/url-helper';
+import HeadComponent from '../../components/HeadComponent';
+import { Pages } from '../../constants/pages';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
@@ -59,6 +60,7 @@ const CreateArticle = () => {
 
     return (
         <div className="div-container">
+            <HeadComponent pageId={Pages.LIST_ARTICLES} />
             <div className="container">
                 <div className="row">
                     <div className="col-12">

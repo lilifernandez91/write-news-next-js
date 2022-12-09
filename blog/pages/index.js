@@ -8,6 +8,8 @@ import CustomizedMenus from '../components/CustomizedMenus';
 import URLS from '../helpers/url-helper';
 import { articleStatusHelper } from '../helpers/article-helper';
 import { ARTICLE_STATUS } from '../constants/articleStatus';
+import HeadComponent from '../components/HeadComponent';
+import { Pages } from '../constants/pages';
 import { getDateFormated } from '../helpers/datetime-helper';
 
 const style = {
@@ -84,6 +86,7 @@ const HomePage = () => {
 
     return (
         <div className="div-container">
+            <HeadComponent pageId={Pages.LIST_ARTICLES} />
             <div className="container">
                 <div className="row">
                     <div className="col-12">
