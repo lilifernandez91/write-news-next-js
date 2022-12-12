@@ -3,40 +3,58 @@
     margin-top: 50px;
     overflow-x: auto;
 
-    h1 {
-        font-size: 24px;
-        text-decoration: underline;
-        margin-bottom: 16px;
-        margin-left: 10px;
+    .listar-articulos-header {
+        padding-left: 0;
+        .listar-articulos-header-text {
+            font-size: 24px;
+            text-decoration: underline;
+            margin-bottom: 16px;
+        }
     }
 
     .container-btn-search-status {
         display: flex;
         align-items: center;
+        padding-left: 0;
+        margin-bottom: 16px;
+
+        .MuiInputBase-root {
+            height: 35px;
+        }
+
+        .MuiFormControl-root {
+            margin-left: 0;
+        }
 
         .btn-search-status {
-            background-color: $action-color;
-            border: none;
             width: 80px;
-            height: 55px;
+            height: 35px;
             border-radius: 3px;
+            text-transform: capitalize;
+            a {
+                text-decoration: none;
+            }
         }
 
         .link-search-status {
-            color: $white-color;
+            color: #2271b1;
+            border: 1px solid #2271b1;
             text-decoration: none;
+            background: #f6f7f7;
         }
     }
 
     .container-btn-create-article {
         display: flex;
         justify-content: right;
+        padding-right: 0;
+        align-items: center;
 
         .btn-create-article {
-            background-color: $action-color;
+            background-color: #4681f4;
             border: none;
             width: 125px;
-            height: 55px;
+            height: 35px;
 
             .link-create-article {
                 color: $white-color;
@@ -48,6 +66,12 @@
 
 .table-style {
     border: 1px solid $table-border;
+
+    .table-header-col {
+    }
+
+    .table-body-col {
+    }
 }
 
 #icon-modal {
@@ -97,5 +121,6 @@
 }
 
 .pagination {
-    justify-content: center;
+    justify-content: end;
+    margin-bottom: 16px;
 }

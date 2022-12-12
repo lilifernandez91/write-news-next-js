@@ -5,6 +5,7 @@ import ArticleForm from '../../components/ArticleForm';
 import HeadComponent from '../../components/HeadComponent';
 import { Pages } from '../../constants/pages';
 import axiosApiInstance from '../../http/axiosInstance';
+import URLS from '../../helpers/url-helper';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
@@ -23,8 +24,14 @@ const CreateArticle = () => {
         setArticle({ ...article, [id]: value });
     };
 
+    const onChangeAuthor = (event) => {
+        const { value } = event.target; //event.target es el input y se queda con el id y el value
+        setArticle({ ...article, author: value });
+    };
+
     //Para obtener el artículo y el contenido y se le manda el payload a la API
-    const onSubmit = (event) => {
+    const onSubmit = (event, status) => {
+        debugger
         event.preventDefault();
         const validationErrors = validarFormulario(article, content);
         setErrors(validationErrors);
@@ -40,6 +47,7 @@ const CreateArticle = () => {
             ...article,
             content: content,
             tags: tagListTrimmed,
+            status: status
         };
 
         const urlGet = URLS.URL_ARTICLES();
@@ -48,7 +56,7 @@ const CreateArticle = () => {
             if (response.status === 200) {
                 // redirigir al usuario a la pagina de listar articulos
             } else {
-                // decirle al usuario que algo salio mal
+                // decirle al usuario que algo salió mal
             }
         });
     };
@@ -81,6 +89,7 @@ const CreateArticle = () => {
                         content={content}
                         article={article}
                         onChange={onChange}
+                        onChangeAuthor={onChangeAuthor}
                         onChangeCkeditor={onChangeCkeditor}
                     />
                 </div>

@@ -4,7 +4,7 @@
     margin-bottom: 16px;
 }
 
-.btn-article{
+.btn-article {
     margin-top: 16px;
     margin-bottom: 10px;
     background-color: $action-color;
@@ -13,4 +13,55 @@
     width: 100px;
     height: 36px;
     border-radius: 4px;
+}
+
+.author-component {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    .MuiInputBase-root {
+        height: 35px;
+    }
+
+    .MuiFormControl-root {
+        margin: 0;
+    }
+}
+
+.publish-container {
+    border: 1px solid rgba($color: #000000, $alpha: 0.1);
+    margin-bottom: 16px;
+    .publish-container-header {
+        padding-left: 10px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+        .publish-container-header-text {
+            font-size: 16px;
+        }
+    }
+    .publish-container-body {
+        padding: 10px;
+        .publish-container-body-draft {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 5px;
+            margin-bottom: 10px;
+        }
+        .publish-container-body-status {
+        }
+    }
+
+    .publish-container-footer {
+        background-color: #f6f7f7;
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 10px;
+    }
 }

@@ -46,7 +46,12 @@ const EditArticlePage = (props) => {
         setArticle({ ...article, [id]: value });
     };
 
-    const onSubmit = (event) => {
+    const onChangeAuthor = (event) => {
+        const { value } = event.target; //event.target es el input y se queda con el id y el value
+        setArticle({ ...article, author: value });
+    };
+
+    const onSubmit = (event, status) => {
         event.preventDefault();
         const validationErrors = validarFormulario(article, content);
         setErrors(validationErrors);
@@ -61,6 +66,7 @@ const EditArticlePage = (props) => {
             ...article,
             content: content,
             tags: tagListTrimmed,
+            status: status
         };
 
         const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
@@ -102,6 +108,7 @@ const EditArticlePage = (props) => {
                             content={content}
                             onChange={onChange}
                             onChangeCkeditor={onChangeCkeditor}
+                            onChangeAuthor={onChangeAuthor}
                         />
                     </div>
                 </div>
