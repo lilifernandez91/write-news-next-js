@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from '@mui/material';
+import { Box, Modal, Pagination, PaginationItem, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import Link from 'next/link';
@@ -11,6 +11,8 @@ import HeadComponent from '../components/HeadComponent';
 import { Pages } from '../constants/pages';
 import { getDateFormated } from '../helpers/datetime-helper';
 import MultipleSelectCheckmarks from '../components/Select';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const style = {
     position: 'absolute',
@@ -104,8 +106,8 @@ const HomePage = () => {
                             <MultipleSelectCheckmarks />
                         </div>
                         <div>
-                            <button type="button" className='btn-search-status'>
-                                <Link href="" className='link-search-status'>
+                            <button type="button" className="btn-search-status">
+                                <Link href="" className="link-search-status">
                                     Buscar
                                 </Link>
                             </button>
@@ -150,6 +152,17 @@ const HomePage = () => {
                             ))}
                         </tbody>
                     </table>
+                    <div className='pagination'>
+                        <Pagination
+                            count={10}
+                            renderItem={(item) => (
+                                <PaginationItem
+                                    slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                                    {...item}
+                                />
+                            )}
+                        />
+                    </div>
                 </div>
             </div>
 
