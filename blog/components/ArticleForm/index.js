@@ -40,7 +40,6 @@ const ArticleForm = (props) => {
                     )}
                 </div>
                 <div className="col-12 col-lg-4">
-                    <PublishComponent onSubmit={props.onSubmit} />
                     <div className="mb-3 author-component">
                         <label htmlFor="exampleInputPassword1" className="form-label">
                             Autor
@@ -61,9 +60,10 @@ const ArticleForm = (props) => {
                             id="tags"
                             type="text"
                             className="form-control"
-                            //placeholder=""
+                            placeholder="Escribe las tags separadas por una coma"
                         />
                     </div>
+                    <PublishComponent onSubmit={props.onSubmit} />
                 </div>
             </div>
             <div className="col-12">

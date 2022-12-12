@@ -42,6 +42,7 @@
 
         .publish-container-header-text {
             font-size: 16px;
+            margin-top: 8px;
         }
     }
     .publish-container-body {
@@ -53,6 +54,23 @@
             margin-bottom: 10px;
         }
         .publish-container-body-status {
+            margin-top: 24px;
+
+            .icon-publish {
+                margin-right: 16px;
+                color: $gray-dark;
+            }
+
+            .span {
+                color: $gray-dark;
+            }
+
+            .span-edit {
+                margin-left: 16px;
+                text-decoration: underline;
+                color: $action-color;
+
+            }
         }
     }
 

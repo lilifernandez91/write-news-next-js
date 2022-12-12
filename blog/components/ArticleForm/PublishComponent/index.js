@@ -1,6 +1,34 @@
-import { ARTICLE_STATUS } from "../../../constants/articleStatus";
+import PushPinIcon from '@mui/icons-material/PushPin';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import { Box, Modal, Typography } from '@mui/material';
+import { useState } from 'react';
+import { ARTICLE_STATUS } from '../../../constants/articleStatus';
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: 'none',
+    boxShadow: 24,
+    p: 4,
+};
 
 const PublishComponent = (props) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClick = (event) => {
+        event.preventDefault();
+    };
+
+    const handleClose = (event) => {
+        event.preventDefault();
+        setShowModal(false);
+    };
+
     return (
         <div className="publish-container">
             <div className="publish-container-header">
@@ -14,28 +42,66 @@ const PublishComponent = (props) => {
                         onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DRAFT)}
                         id="draft"
                     >
-                        Save Draft
+                        Guardar borrador
                     </button>
                     <button
                         className="btn-action-transparent"
                         onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DRAFT)}
                         id="preview"
                     >
-                        Preview
+                        Vista previa
                     </button>
                 </div>
                 <div className="publish-container-body-status">
                     <p>
-                        Estado: <span>Borrador</span>
+                        <PushPinIcon className="icon-publish" />
+                        <span className="span">Estado:</span> Borrador
+                        <span className="span-edit" onClick={handleClick}>
+                            Editar
+                        </span>
+                    </p>
+                    <p>
+                        <VisibilityIcon className="icon-publish" />
+                        <span className="span">Visibilidad:</span> Publicado
+                    </p>
+                    <p>
+                        <DateRangeIcon className="icon-publish" />
+                        <span className="span">Publicar:</span> Inmediatamente
                     </p>
                 </div>
             </div>
 
             <div className="publish-container-footer">
-                <button className="btn-publish" onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.PUBLISHED)} id="publish">
+                <button
+                    className="btn-publish"
+                    onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.PUBLISHED)}
+                    id="publish"
+                >
                     Publicar
                 </button>
             </div>
+
+            <Modal
+                open={showModal === false}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style} className="container-modal">
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Cambiar estados
+                    </Typography>
+                    <select name="status" id="">
+                        <option value="borrador">Borrador</option>
+                        <option value="creado">Creado</option>
+                        <option value="publicado">Publicado</option>
+                        <option value="pausado">Pausado</option>
+                        <option value="archivado">Archivado</option>
+                        <option value="eliminado">Eliminado</option>
+                    </select>
+                </Box>
+            </Modal>
+            {showModal && null}
         </div>
     );
 };
