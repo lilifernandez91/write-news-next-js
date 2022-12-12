@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from '@mui/material';
+import { Box, Button, Modal, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -96,49 +96,51 @@ const HomePage = () => {
             <HeadComponent pageId={Pages.LIST_ARTICLES} />
             <div className="container">
                 <div className="row">
-                    <div>
-                        <h1>Listar artículos</h1>
+                    <div className="listar-articulos-header">
+                        <h1 className="listar-articulos-header-text">Listar artículos</h1>
                     </div>
                     <div className="col-8 container-btn-search-status">
                         <div>
                             <MultipleSelectCheckmarks />
                         </div>
                         <div>
-                            <button type="button" className='btn-search-status'>
-                                <Link href="" className='link-search-status'>
+                            <Button variant={`outlined`} type="button" className="btn-search-status">
+                                <Link href="" className="">
                                     Buscar
                                 </Link>
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div className="col-4 container-btn-create-article">
-                        <button type="button" className="btn btn-primary btn-sm btn-create-article">
-                            <Link href="/create-article" className="link-create-article">
+                        <Link href="/create-article" className="link-create-article">
+                            <button type="button" className="btn btn-primary btn-sm btn-create-article">
                                 Crear artículo
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     </div>
 
                     <table className="table table-striped table-style">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Título</th>
-                                <th>Autor</th>
-                                <th>Fecha</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th className="table-header-col text-center"></th>
+                                <th className="table-header-col text-left">Título</th>
+                                <th className="table-header-col text-left">Autor</th>
+                                <th className="table-header-col text-center">Fecha</th>
+                                <th className="table-header-col text-center">Estado</th>
+                                <th className="table-header-col text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.map((p, i) => (
                                 <tr key={i}>
-                                    <td>{i + 1}</td>
-                                    <td>{p.title}</td>
-                                    <td>{p.author}</td>
-                                    <td>{getDateFormated(p.lastUpdated)}</td>
-                                    <td>{articleStatusHelper.GET_ARTICLE_STATUS(p.status)}</td>
-                                    <td>
+                                    <td className="table-body-col text-center">{i + 1}</td>
+                                    <td className="table-body-col text-left">{p.title}</td>
+                                    <td className="table-body-col text-left">{p.author}</td>
+                                    <td className="table-body-col text-center">{getDateFormated(p.lastUpdated)}</td>
+                                    <td className="table-body-col text-center">
+                                        {articleStatusHelper.GET_ARTICLE_STATUS(p.status)}
+                                    </td>
+                                    <td className="table-body-col text-center">
                                         <CustomizedMenus
                                             article={p}
                                             handleDeleteModal={handleDeleteModal}

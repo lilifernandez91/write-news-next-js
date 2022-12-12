@@ -81,7 +81,7 @@ export default function CustomizedMenus(props) {
                 aria-controls={open ? 'demo-customized-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-                variant="contained"
+                variant="outlined"
                 disableElevation
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
