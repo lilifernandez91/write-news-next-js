@@ -1,6 +1,5 @@
 import { Box, Modal, Pagination, PaginationItem, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import axios from 'axios';
 import Link from 'next/link';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useEffect, useState } from 'react';
@@ -11,6 +10,7 @@ import HeadComponent from '../components/HeadComponent';
 import { Pages } from '../constants/pages';
 import { getDateFormated } from '../helpers/datetime-helper';
 import MultipleSelectCheckmarks from '../components/Select';
+import axiosApiInstance from '../http/axiosInstance';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -35,7 +35,7 @@ const HomePage = () => {
     useEffect(() => {
         const urlGet = URLS.URL_ARTICLES();
 
-        axios
+        axiosApiInstance
             .get(urlGet)
             .then((response) => {
                 setData(response.data);
@@ -50,7 +50,7 @@ const HomePage = () => {
         // api a delete
         const urlDelete = URLS.URL_ARTICLES_DELETE(articleToDelete.id);
 
-        axios.delete(urlDelete).then((response) => {
+        axiosApiInstance.delete(urlDelete).then((response) => {
             if (response.status === 204) {
                 setShowModal(false);
                 const newData = data.filter((x) => x.id !== articleToDelete.id);
@@ -80,7 +80,7 @@ const HomePage = () => {
             status: status,
         };
 
-        axios.put(urlPause, payload).then((response) => {
+        axiosApiInstance.put(urlPause, payload).then((response) => {
             if (response.status === 204) {
                 const newData = [...data];
                 for (const x of newData) {
