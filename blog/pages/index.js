@@ -62,7 +62,7 @@ const HomePage = () => {
     const handleDeleteModal = (article) => {
         setShowModal(true);
         setArticleToDelete(article);
-    };
+    };2
 
     const handleEdit = (article) => {
         const url = `/edit-article/${article.id}`;

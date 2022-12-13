@@ -69,7 +69,6 @@
                 margin-left: 16px;
                 text-decoration: underline;
                 color: $action-color;
-
             }
         }
     }
@@ -81,5 +80,25 @@
         justify-content: flex-end;
         align-items: center;
         padding-right: 10px;
+    }
+}
+
+.container-form-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .label-modal {
+        margin-left: 24px;
+    }
+
+    .btn-modal {
+        border: 1px solid #2271b1;
+        background: #f6f7f7;
+        color: #2271b1;
+        border-radius: 4px;
+        height: 30px;
+        margin-top: 24px;
     }
 }

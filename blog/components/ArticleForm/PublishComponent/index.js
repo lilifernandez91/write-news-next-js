@@ -91,14 +91,35 @@ const PublishComponent = (props) => {
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Cambiar estados
                     </Typography>
-                    <select name="status" id="">
-                        <option value="borrador">Borrador</option>
-                        <option value="creado">Creado</option>
-                        <option value="publicado">Publicado</option>
-                        <option value="pausado">Pausado</option>
-                        <option value="archivado">Archivado</option>
-                        <option value="eliminado">Eliminado</option>
-                    </select>
+                    <form className='container container-form-modal'>
+                        <div>
+                            <div>
+                                <input type="radio" name="status" value="borrador"/>
+                                <label for="name" className='label-modal'>Borrador</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="status" value="creado" />
+                                <label for="name" className='label-modal'>Creado</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="status" value="publicado" />
+                                <label for="name" className='label-modal'>Publicado</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="status" value="pausado" />
+                                <label for="name" className='label-modal'>Pausado</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="status" value="archivado" />
+                                <label for="name" className='label-modal'>Archivado</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="status" value="eliminado" />
+                                <label for="name" className='label-modal'>Eliminado</label>
+                            </div>
+                        </div>
+                        <button className='btn-modal'>Guardar</button>
+                    </form>
                 </Box>
             </Modal>
             {showModal && null}
