@@ -124,7 +124,6 @@ const PublishComponent = (props) => {
                     </form>
                 </Box>
             </Modal>
-            {showModal && null}
         </div>
     );
 };
