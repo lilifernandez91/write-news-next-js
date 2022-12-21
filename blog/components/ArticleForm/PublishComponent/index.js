@@ -3,7 +3,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import { Box, Modal, Typography } from '@mui/material';
 import { useState } from 'react';
-import { ARTICLE_STATUS, ARTICLE_STATUS_TEXT } from '../../../constants/articleStatus';
+import { ARTICLE_STATUS } from '../../../constants/articleStatus';
 
 const style = {
     position: 'absolute',
