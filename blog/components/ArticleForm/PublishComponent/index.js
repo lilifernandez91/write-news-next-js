@@ -3,7 +3,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import { Box, Modal, Typography } from '@mui/material';
 import { useState } from 'react';
-import { ARTICLE_STATUS } from '../../../constants/articleStatus';
+import { ARTICLE_STATUS, ARTICLE_STATUS_TEXT } from '../../../constants/articleStatus';
 
 const style = {
     position: 'absolute',
@@ -22,6 +22,7 @@ const PublishComponent = (props) => {
 
     const handleClick = (event) => {
         event.preventDefault();
+        setShowModal(true);
     };
 
     const handleClose = (event) => {
@@ -55,7 +56,8 @@ const PublishComponent = (props) => {
                 <div className="publish-container-body-status">
                     <p>
                         <PushPinIcon className="icon-publish" />
-                        <span className="span">Estado:</span> Borrador
+                        <span className="span">Estado: </span> 
+                        <span></span> 
                         <span className="span-edit" onClick={handleClick}>
                             Editar
                         </span>
@@ -82,7 +84,7 @@ const PublishComponent = (props) => {
             </div>
 
             <Modal
-                open={showModal === false}
+                open={showModal === true}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -95,27 +97,27 @@ const PublishComponent = (props) => {
                         <div>
                             <div>
                                 <input type="radio" name="status" value="borrador"/>
-                                <label for="name" className='label-modal'>Borrador</label>
+                                <label for="name" className='label-modal' onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.DRAFT)}>Borrador</label>
                             </div>
                             <div>
                                 <input type="radio" name="status" value="creado" />
-                                <label for="name" className='label-modal'>Creado</label>
+                                <label for="name" className='label-modal' onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.CREATED)}>Creado</label>
                             </div>
                             <div>
                                 <input type="radio" name="status" value="publicado" />
-                                <label for="name" className='label-modal'>Publicado</label>
+                                <label for="name" className='label-modal' onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.PUBLISHED)}>Publicado</label>
                             </div>
                             <div>
                                 <input type="radio" name="status" value="pausado" />
-                                <label for="name" className='label-modal'>Pausado</label>
+                                <label for="name" className='label-modal' onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.PAUSED)}>Pausado</label>
                             </div>
                             <div>
                                 <input type="radio" name="status" value="archivado" />
-                                <label for="name" className='label-modal'>Archivado</label>
+                                <label for="name" className='label-modal' onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.ARCHIVED)}>Archivado</label>
                             </div>
                             <div>
                                 <input type="radio" name="status" value="eliminado" />
-                                <label for="name" className='label-modal'>Eliminado</label>
+                                <label for="name" className='label-modal' onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DELETED)}>Eliminado</label>
                             </div>
                         </div>
                         <button className='btn-modal'>Guardar</button>
