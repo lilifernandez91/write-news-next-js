@@ -1,4 +1,4 @@
-export const getDateFormated = dateCSharpFormat => {
+export const getDateFormated = (dateCSharpFormat) => {
     const date = new Date(Date.parse(dateCSharpFormat));
 
     const month = String(date.getMonth() + 1).padStart(2, '0');

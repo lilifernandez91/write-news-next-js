@@ -1,21 +1,5 @@
-import PushPinIcon from '@mui/icons-material/PushPin';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import { Box, Modal, Typography } from '@mui/material';
-import { useState } from 'react';
-import { ARTICLE_STATUS } from '../../../constants/articleStatus';
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: 'none',
-    boxShadow: 24,
-    p: 4,
-};
+import { ARTICLE_STATUS } from "../../../constants/articleStatus";
+import { articleStatusHelper } from "../../../helpers/article-helper";
 
 const PublishComponent = (props) => {
     const [showModal, setShowModal] = useState(false);
@@ -40,14 +24,14 @@ const PublishComponent = (props) => {
                 <div className="publish-container-body-draft">
                     <button
                         className="btn-action-transparent"
-                        onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DRAFT)}
+                        onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.DRAFT)}
                         id="draft"
                     >
                         Guardar borrador
                     </button>
                     <button
                         className="btn-action-transparent"
-                        onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DRAFT)}
+                        onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.DRAFT)}
                         id="preview"
                     >
                         Vista previa
@@ -55,30 +39,13 @@ const PublishComponent = (props) => {
                 </div>
                 <div className="publish-container-body-status">
                     <p>
-                        <PushPinIcon className="icon-publish" />
-                        <span className="span">Estado: </span> 
-                        <span></span> 
-                        <span className="span-edit" onClick={handleClick}>
-                            Editar
-                        </span>
-                    </p>
-                    <p>
-                        <VisibilityIcon className="icon-publish" />
-                        <span className="span">Visibilidad:</span> Publicado
-                    </p>
-                    <p>
-                        <DateRangeIcon className="icon-publish" />
-                        <span className="span">Publicar:</span> Inmediatamente
+                        Estado: <span>{articleStatusHelper.GET_ARTICLE_STATUS(props.article.status)}</span>
                     </p>
                 </div>
             </div>
 
             <div className="publish-container-footer">
-                <button
-                    className="btn-publish"
-                    onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.PUBLISHED)}
-                    id="publish"
-                >
+                <button className="btn-publish" onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.PUBLISHED)} id="publish">
                     Publicar
                 </button>
             </div>

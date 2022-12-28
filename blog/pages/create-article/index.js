@@ -1,22 +1,26 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import { Pages } from '../../constants/pages';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
 import HeadComponent from '../../components/HeadComponent';
-import { Pages } from '../../constants/pages';
 import axiosApiInstance from '../../http/axiosInstance';
 import URLS from '../../helpers/url-helper';
+import { ROUTES_CONSTANTS } from '../../constants/routes-constants';
 
 const CreateArticle = () => {
     const [article, setArticle] = useState({
         title: '',
         secondaryTitle: '',
-        author: '',
+        author: 'Analítica Fantasy',
         tags: '',
     });
 
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
+
+    const router = useRouter();
 
     //Para controlar el input
     const onChange = (event) => {
@@ -29,9 +33,12 @@ const CreateArticle = () => {
         setArticle({ ...article, author: value });
     };
 
+    const onChangeBannerImage = (imageUrl) => {
+        setArticle({ ...article, bannerImage: imageUrl });
+    };
+
     //Para obtener el artículo y el contenido y se le manda el payload a la API
     const onSubmit = (event, status) => {
-        debugger
         event.preventDefault();
         const validationErrors = validarFormulario(article, content);
         setErrors(validationErrors);
@@ -47,14 +54,15 @@ const CreateArticle = () => {
             ...article,
             content: content,
             tags: tagListTrimmed,
-            status: status
+            status: status,
         };
 
         const urlGet = URLS.URL_ARTICLES();
 
         axiosApiInstance.post(urlGet, payload).then((response) => {
-            if (response.status === 200) {
+            if (response.status === 200 || response.status === 204) {
                 // redirigir al usuario a la pagina de listar articulos
+                router.push(ROUTES_CONSTANTS.ARTICLES);
             } else {
                 // decirle al usuario que algo salió mal
             }
@@ -91,6 +99,7 @@ const CreateArticle = () => {
                         onChange={onChange}
                         onChangeAuthor={onChangeAuthor}
                         onChangeCkeditor={onChangeCkeditor}
+                        onChangeBannerImage={onChangeBannerImage}
                     />
                 </div>
             </div>

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { useRouter } from 'next/router';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import validarFormulario from '../../components/Validation';
 import ArticleForm from '../../components/ArticleForm';
 import URLS from '../../helpers/url-helper';
 import HeadComponent from '../../components/HeadComponent';
 import { Pages } from '../../constants/pages';
 import axiosApiInstance from '../../http/axiosInstance';
+import { ARTICLE_STATUS } from '../../constants/articleStatus';
+import { ROUTES_CONSTANTS } from '../../constants/routes-constants';
 
 const EditArticlePage = (props) => {
     const [article, setArticle] = useState({});
@@ -51,6 +53,10 @@ const EditArticlePage = (props) => {
         setArticle({ ...article, author: value });
     };
 
+    const onChangeBannerImage = (imageUrl) => {
+        setArticle({ ...article, bannerImage: imageUrl });
+    };
+
     const onSubmit = (event, status) => {
         event.preventDefault();
         const validationErrors = validarFormulario(article, content);
@@ -66,14 +72,27 @@ const EditArticlePage = (props) => {
             ...article,
             content: content,
             tags: tagListTrimmed,
-            status: status
+            status: article.status === ARTICLE_STATUS.PUBLISHED ? ARTICLE_STATUS.PUBLISHED : status,
         };
 
         const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
 
         axiosApiInstance.put(urlEdit, payload).then((response) => {
             if (response.status === 200) {
-                router.push('/');
+                router.push(ROUTES_CONSTANTS.ARTICLES);
+            }
+        });
+    };
+
+    const onChangeStatus = (event, status) => {
+        const payload = {
+            status: status,
+        };
+
+        const urlEdit = URLS.URL_ARTICLES_CHANGE_STATUS(props.id);
+
+        axiosApiInstance.put(urlEdit, payload).then((response) => {
+            if (response.status === 200) {
             }
         });
     };
@@ -109,6 +128,8 @@ const EditArticlePage = (props) => {
                             onChange={onChange}
                             onChangeCkeditor={onChangeCkeditor}
                             onChangeAuthor={onChangeAuthor}
+                            onChangeBannerImage={onChangeBannerImage}
+                            onChangeStatus={onChangeStatus}
                         />
                     </div>
                 </div>
