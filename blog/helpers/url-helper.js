@@ -1,4 +1,8 @@
 const URLS = {
+    URL_IMAGES: () => {
+        const url = `${process.env.NEXT_PUBLIC_URL_API}/images`;
+        return url;
+    },
     URL_ARTICLES: () => {
         const url = `${process.env.NEXT_PUBLIC_URL_API}/articles`;
         return url;

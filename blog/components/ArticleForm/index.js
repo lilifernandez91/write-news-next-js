@@ -1,7 +1,9 @@
 import { ARTICLE_STATUS } from '../../constants/articleStatus';
 import CustomCKEditor from '../CkEditor';
 import AuthorComponent from './AuthorComponent';
+import BannerImageComponent from './BannerImageComponent';
 import PublishComponent from './PublishComponent';
+import TagsComponent from './TagsComponent';
 
 const ArticleForm = (props) => {
     return (
@@ -40,30 +42,24 @@ const ArticleForm = (props) => {
                     )}
                 </div>
                 <div className="col-12 col-lg-4">
-                    <PublishComponent onSubmit={props.onSubmit} />
-                    <div className="mb-3 author-component">
-                        <label htmlFor="exampleInputPassword1" className="form-label">
-                            Autor
-                        </label>
-                        <AuthorComponent
-                            onChange={props.onChange}
-                            article={props.article}
-                            onChangeAuthor={props.onChangeAuthor}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">
-                            Tags
-                        </label>
-                        <input
-                            value={props.article.tags}
-                            onChange={props.onChange}
-                            id="tags"
-                            type="text"
-                            className="form-control"
-                            //placeholder=""
-                        />
-                    </div>
+                    <PublishComponent
+                        onSubmit={props.onSubmit}
+                        onChangeStatus={props.onChangeStatus}
+                        article={props.article}
+                    />
+
+                    <AuthorComponent
+                        onChange={props.onChange}
+                        article={props.article}
+                        onChangeAuthor={props.onChangeAuthor}
+                    />
+
+                    <TagsComponent onChange={props.onChange} article={props.article} />
+
+                    <BannerImageComponent
+                        onChangeBannerImage={props.onChangeBannerImage}
+                        article={props.article}
+                    />
                 </div>
             </div>
             <div className="col-12">

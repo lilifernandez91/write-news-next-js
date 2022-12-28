@@ -1,4 +1,5 @@
 import { ARTICLE_STATUS } from "../../../constants/articleStatus";
+import { articleStatusHelper } from "../../../helpers/article-helper";
 
 const PublishComponent = (props) => {
     return (
@@ -11,14 +12,14 @@ const PublishComponent = (props) => {
                 <div className="publish-container-body-draft">
                     <button
                         className="btn-action-transparent"
-                        onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DRAFT)}
+                        onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.DRAFT)}
                         id="draft"
                     >
                         Save Draft
                     </button>
                     <button
                         className="btn-action-transparent"
-                        onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.DRAFT)}
+                        onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.DRAFT)}
                         id="preview"
                     >
                         Preview
@@ -26,13 +27,13 @@ const PublishComponent = (props) => {
                 </div>
                 <div className="publish-container-body-status">
                     <p>
-                        Estado: <span>Borrador</span>
+                        Estado: <span>{articleStatusHelper.GET_ARTICLE_STATUS(props.article.status)}</span>
                     </p>
                 </div>
             </div>
 
             <div className="publish-container-footer">
-                <button className="btn-publish" onClick={(e) => props.onSubmit(e, ARTICLE_STATUS.PUBLISHED)} id="publish">
+                <button className="btn-publish" onClick={(e) => props.onChangeStatus(e, ARTICLE_STATUS.PUBLISHED)} id="publish">
                     Publicar
                 </button>
             </div>
