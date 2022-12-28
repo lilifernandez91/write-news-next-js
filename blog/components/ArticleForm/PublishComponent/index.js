@@ -1,4 +1,5 @@
 import { Box, Modal, Typography } from "@mui/material";
+import { useState } from "react";
 import { ARTICLE_STATUS } from "../../../constants/articleStatus";
 import { articleStatusHelper } from "../../../helpers/article-helper";
 
