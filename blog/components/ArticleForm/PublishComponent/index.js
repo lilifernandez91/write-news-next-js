@@ -1,15 +1,15 @@
-import { Box, Modal, Typography } from "@mui/material";
-import { useState } from "react";
+// import { Box, Modal, Typography } from "@mui/material";
+// import { useState } from "react";
 import { ARTICLE_STATUS } from "../../../constants/articleStatus";
 import { articleStatusHelper } from "../../../helpers/article-helper";
 
 const PublishComponent = (props) => {
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
-    const handleClose = (event) => {
-        event.preventDefault();
-        setShowModal(false);
-    };
+    // const handleClose = (event) => {
+    //     event.preventDefault();
+    //     setShowModal(false);
+    // };
 
     return (
         <div className="publish-container">
@@ -47,7 +47,7 @@ const PublishComponent = (props) => {
                 </button>
             </div>
 
-            <Modal
+            {/* <Modal
                 open={showModal === true}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -87,7 +87,7 @@ const PublishComponent = (props) => {
                         <button className='btn-modal'>Guardar</button>
                     </form>
                 </Box>
-            </Modal>
+            </Modal> */}
         </div>
     );
 };
