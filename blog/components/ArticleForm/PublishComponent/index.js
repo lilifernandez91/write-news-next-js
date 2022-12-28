@@ -1,13 +1,9 @@
+import { Box, Modal, Typography } from "@mui/material";
 import { ARTICLE_STATUS } from "../../../constants/articleStatus";
 import { articleStatusHelper } from "../../../helpers/article-helper";
 
 const PublishComponent = (props) => {
     const [showModal, setShowModal] = useState(false);
-
-    const handleClick = (event) => {
-        event.preventDefault();
-        setShowModal(true);
-    };
 
     const handleClose = (event) => {
         event.preventDefault();
