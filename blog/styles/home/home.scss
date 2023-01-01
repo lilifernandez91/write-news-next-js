@@ -19,10 +19,6 @@
         align-items: center;
         padding-left: 0;
 
-        @media screen and (max-width: $media-medium) {
-            padding-right: 0;
-        }
-
         .MuiInputBase-root {
             height: 35px;
         }
@@ -136,6 +132,11 @@
         border: none;
         color: #f2f2f2;
     }
+}
+
+.pagination {
+    justify-content: end;
+    margin-bottom: 16px;
 }
 
 .table-articles-container{

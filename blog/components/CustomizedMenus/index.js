@@ -8,6 +8,10 @@ import Divider from '@mui/material/Divider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
+import PublishIcon from '@mui/icons-material/Publish';
+import FolderCopyIcon from '@mui/icons-material/FolderCopy';
+import FolderOffIcon from '@mui/icons-material/FolderOff';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { ARTICLE_STATUS } from '../../constants/articleStatus';
 
@@ -54,6 +58,7 @@ export default function CustomizedMenus(props) {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -114,14 +119,14 @@ export default function CustomizedMenus(props) {
 
                 {props.article.status === ARTICLE_STATUS.PAUSED && (
                     <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.CREATED)} disableRipple>
-                        <PauseCircleIcon />
+                        <PlayCircleFilledWhiteIcon />
                         Despausar artículo
                     </MenuItem>
                 )}
 
                 {props.article.status === ARTICLE_STATUS.CREATED && (
                     <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.PUBLISHED)} disableRipple>
-                        <PauseCircleIcon />
+                        <PublishIcon />
                         Publicar artículo
                     </MenuItem>
                 )}
@@ -130,7 +135,7 @@ export default function CustomizedMenus(props) {
 
                 {props.article.status === ARTICLE_STATUS.ARCHIVED && (
                     <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.CREATED)} disableRipple>
-                        <PauseCircleIcon />
+                        <FolderOffIcon />
                         Desarchivar artículo
                     </MenuItem>
                 )}
@@ -140,7 +145,7 @@ export default function CustomizedMenus(props) {
                     props.article.status === ARTICLE_STATUS.PAUSED ||
                     props.article.status === ARTICLE_STATUS.DRAFT) && (
                     <MenuItem onClick={() => handleChangeStatus(props.article, ARTICLE_STATUS.ARCHIVED)} disableRipple>
-                        <PauseCircleIcon />
+                        <FolderCopyIcon />
                         Archivar artículo
                     </MenuItem>
                 )}
