@@ -26,7 +26,7 @@ const EditArticlePage = (props) => {
     };
 
     useEffect(() => {
-        const urlEdit = URLS.URL_ARTICLES_EDIT(props.id);
+        const urlEdit = URLS.URL_ARTICLES_GET_BY_ID(props.id);
 
         axiosApiInstance
             .get(urlEdit)

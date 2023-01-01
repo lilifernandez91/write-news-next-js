@@ -11,6 +11,9 @@ const URLS = {
         return `${process.env.NEXT_PUBLIC_URL_API}/articles/${id}`;
     },
     URL_ARTICLES_EDIT: (id) => {
+        return `${process.env.NEXT_PUBLIC_URL_API}/articles/${id}`;
+    },
+    URL_ARTICLES_GET_BY_ID: (id) => {
         return `${process.env.NEXT_PUBLIC_URL_API}/getArticle?id=${id}`;
     },
     URL_ARTICLES_CHANGE_STATUS: (id) => {
