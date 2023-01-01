@@ -1,7 +1,9 @@
 .div-container {
     min-height: calc(100vh - 100px);
-    margin-top: 50px;
+    margin-top: 20px;
     overflow-x: auto;
+    padding-left: 10px;
+    padding-right: 10px;
 
     .listar-articulos-header {
         padding-left: 0;
@@ -17,6 +19,10 @@
         align-items: center;
         padding-left: 0;
 
+        @media screen and (max-width: $media-medium) {
+            padding-right: 0;
+        }
+
         .MuiInputBase-root {
             height: 35px;
         }
@@ -26,7 +32,6 @@
         }
 
         .btn-search-status {
-            width: 80px;
             height: 35px;
             border-radius: 3px;
             text-transform: capitalize;
@@ -49,11 +54,20 @@
         padding-right: 0;
         align-items: center;
 
+        @media screen and (max-width: $media-medium) {
+            display: block;
+            padding-left: 0;
+        }
+
         .btn-create-article {
             background-color: #4681f4;
             border: none;
             width: 125px;
             height: 35px;
+
+            @media screen and (max-width: $media-medium) {
+                width: 100%;;
+            }
 
             .link-create-article {
                 color: $white-color;
@@ -63,14 +77,18 @@
     }
 }
 
-.table-style {
-    border: 1px solid $table-border;
-
-    .table-header-col {
+.header-row-cta{
+    @media screen and (max-width: $media-medium) {
+        display: flex;
+        flex-direction: column-reverse;
     }
+}
+
+.table-style {
+    border: 1px solid $table-border;   
 
     .table-body-col {
-        line-height: 35px;
+        line-height: 22px;
     }
 }
 
@@ -117,5 +135,15 @@
         background-color: #c1c1c1;
         border: none;
         color: #f2f2f2;
+    }
+}
+
+.table-articles-container{
+    overflow-x: auto;
+}
+
+.MuiFormControl-root.css-2m9kme-MuiFormControl-root{
+    @media screen and (max-width: $media-medium) {
+        // width: calc(100% - 108px);
     }
 }

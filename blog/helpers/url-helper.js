@@ -3,8 +3,8 @@ const URLS = {
         const url = `${process.env.NEXT_PUBLIC_URL_API}/images`;
         return url;
     },
-    URL_ARTICLES: () => {
-        const url = `${process.env.NEXT_PUBLIC_URL_API}/articles`;
+    URL_ARTICLES: (skip, take) => {
+        const url = `${process.env.NEXT_PUBLIC_URL_API}/articles?skip=${skip}&take=${take}`;
         return url;
     },
     URL_ARTICLES_DELETE: (id) => {

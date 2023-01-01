@@ -1,8 +1,10 @@
-import { Box, Button, Modal, Typography } from '@mui/material';
+import { Box, Button, Modal, Pagination, PaginationItem, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useEffect, useState } from 'react';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CustomizedMenus from '../components/CustomizedMenus';
 import URLS from '../helpers/url-helper';
 import { articleStatusHelper } from '../helpers/article-helper';
@@ -29,9 +31,11 @@ const HomePage = () => {
     const [articleToDelete, setArticleToDelete] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const router = useRouter();
+    const [skip, setSkip] = useState(0);
+    const [take] = useState(10);
 
     useEffect(() => {
-        const urlGet = URLS.URL_ARTICLES();
+        const urlGet = URLS.URL_ARTICLES(skip, take);
 
         axiosApiInstance
             .get(urlGet)
@@ -42,7 +46,7 @@ const HomePage = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [skip]);
 
     const handleDelete = () => {
         // api a delete
@@ -91,6 +95,10 @@ const HomePage = () => {
         });
     };
 
+    const handleChangePage = (event, value) => {
+        setSkip((value - 1) * take);
+    };
+
     return (
         <div className="div-container">
             <HeadComponent pageId={Pages.LIST_ARTICLES} />
@@ -99,7 +107,9 @@ const HomePage = () => {
                     <div className="listar-articulos-header">
                         <h1 className="listar-articulos-header-text">Listar artículos</h1>
                     </div>
-                    <div className="col-8 container-btn-search-status">
+                </div>
+                <div className="row header-row-cta">
+                    <div className="col-12 col-md-8 container-btn-search-status">
                         <div>
                             <MultipleSelectCheckmarks />
                         </div>
@@ -111,14 +121,15 @@ const HomePage = () => {
                             </Button>
                         </div>
                     </div>
-                    <div className="col-4 container-btn-create-article">
+                    <div className="col-12 col-md-4 container-btn-create-article">
                         <Link href="/create-article" className="link-create-article">
                             <button type="button" className="btn btn-primary btn-sm btn-create-article">
                                 Crear artículo
                             </button>
                         </Link>
                     </div>
-
+                </div>
+                <div className="row table-articles-container">
                     <table className="table table-striped table-style">
                         <thead>
                             <tr>
@@ -136,7 +147,9 @@ const HomePage = () => {
                                     <td className="table-body-col text-center">{i + 1}</td>
                                     <td className="table-body-col text-left">{p.title}</td>
                                     <td className="table-body-col text-left">{p.author}</td>
-                                    <td className="table-body-col text-center">{getDateFormated(p.lastUpdated)}</td>
+                                    <td className="table-body-col text-center">
+                                        {getDateFormated(p.lastUpdated)}
+                                    </td>
                                     <td className="table-body-col text-center">
                                         {articleStatusHelper.GET_ARTICLE_STATUS(p.status)}
                                     </td>
@@ -152,6 +165,21 @@ const HomePage = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+
+                <div className="row">
+                    <div className="pagination" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Pagination
+                            count={10}
+                            onChange={handleChangePage}
+                            renderItem={(item) => (
+                                <PaginationItem
+                                    slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                                    {...item}
+                                />
+                            )}
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -179,7 +207,6 @@ const HomePage = () => {
                     </div>
                 </Box>
             </Modal>
-            {showModal && null}
         </div>
     );
 };
