@@ -12,7 +12,6 @@ import { ROUTES_CONSTANTS } from '../../constants/routes-constants';
 const CreateArticle = () => {
     const [article, setArticle] = useState({
         title: '',
-        secondaryTitle: '',
         author: 'Analítica Fantasy',
         tags: '',
     });

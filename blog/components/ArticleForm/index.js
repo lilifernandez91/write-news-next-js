@@ -24,19 +24,6 @@ const ArticleForm = (props) => {
                             placeholder="Escribe el título del artículo"
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">
-                            Título Secundario
-                        </label>
-                        <input
-                            value={props.article.secondaryTitle}
-                            onChange={props.onChange}
-                            id="secondaryTitle"
-                            type="text"
-                            className="form-control"
-                            placeholder="Escribe el título secundario del artículo"
-                        />
-                    </div>
                     {props.content !== null && (
                         <CustomCKEditor content={props.content} onChangeCkeditor={props.onChangeCkeditor} />
                     )}

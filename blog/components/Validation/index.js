@@ -7,12 +7,6 @@ const validarFormulario = (article, content) => {
         errors.push('El título debe contener entre 10 y 150 caracteres')
     }
 
-    if(!article.secondaryTitle){
-        errors.push('El subtítulo no debe estar vacío')
-    } else if (article.secondaryTitle.length < 10 || article.secondaryTitle.length > 250){
-        errors.push('El subtítulo debe contener entre 10 y 250 caracteres')
-    }
-
     if(!content){
         errors.push('El campo del contenido no debe estar vacío')
     } else if (content.length < 100){

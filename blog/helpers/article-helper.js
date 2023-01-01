@@ -16,7 +16,7 @@ export const articleStatusHelper = {
             case ARTICLE_STATUS.DELETED:
                 return ARTICLE_STATUS_TEXT.DELETED;
             default:
-                return '';
+                return 'Por crear';
         }
     },
     
