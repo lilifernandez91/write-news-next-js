@@ -31,7 +31,7 @@ const Header = () => {
                         </li>
                         <li className='list-header'>
                         <PersonIcon className='person-icon-login'/>
-                            <Link href="/login" className='link'>Iniciar sesion
+                            <Link href="/login" className='link'>Iniciar sesión
                             </Link>
                         </li>
                     </ul>
