@@ -1,3 +1,4 @@
+import PersonIcon from '@mui/icons-material/Person';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HamburguerMenu from '../HamburguerMenu';
@@ -27,6 +28,11 @@ const Header = () => {
                     <ul className='list-container'>
                         <li className='list-header'>
                             <Link href="/" className='link'>Artículos</Link>
+                        </li>
+                        <li className='list-header'>
+                        <PersonIcon className='person-icon-login'/>
+                            <Link href="/login" className='link'>Iniciar sesion
+                            </Link>
                         </li>
                     </ul>
                 </nav>

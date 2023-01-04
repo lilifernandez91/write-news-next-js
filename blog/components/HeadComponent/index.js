@@ -6,18 +6,21 @@ const descriptions = {
     [Pages.CREATE_ARTICLE]: 'Para crear un artículo, rellena los campos y pulsa el botón de crear',
     [Pages.EDIT_ARTICLE]: 'Para editar un artículo, rellena los campos y pulsa el botón de editar',
     [Pages.LIST_ARTICLES]: 'Listado de artículos',
+    [Pages.LOGIN]: 'Para iniciar sesión, rellena los campos y pulsa el botón de enviar',
 };
 
 const titles = {
     [Pages.CREATE_ARTICLE]: 'Crear artículo',
     [Pages.EDIT_ARTICLE]: 'Editar artículo',
     [Pages.LIST_ARTICLES]: 'Listar artículos',
+    [Pages.LOGIN]: 'Iniciar sesión',
 };
 
 const urls = {
     [Pages.CREATE_ARTICLE]: '/create-article',
     [Pages.EDIT_ARTICLE]: '/create-article',
     [Pages.LIST_ARTICLES]: '/',
+    [Pages.LOGIN]: '/login',
 };
 const images = {
     [Pages.CREATE_ARTICLE]: `articles/news.jpg`,
