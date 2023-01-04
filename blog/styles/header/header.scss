@@ -3,12 +3,18 @@
     height: 50px;
 
     .list-container{
-      @include position_header;
+      display: flex;
+      justify-content: space-between;
       padding-top: 10px;
 
       .list-header{
         list-style: none;
         margin-right: 32px;
+
+        .person-icon-login{
+          color: $white-color;
+          margin-right: 8px;
+        }
   
         .link{
           color: $primary-color;
